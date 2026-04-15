@@ -329,16 +329,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // Loading state
     submitBtn.disabled = true;
     submitBtn.classList.add('is-loading');
-    formSuccess.hidden  = true;
+    formSuccess.hidden = true;
 
-    // Simulate async submission — replace with fetch('/api/contact', ...) for production
-    setTimeout(() => {
-      submitBtn.disabled = false;
-      submitBtn.classList.remove('is-loading');
-      form.reset();
-      formSuccess.hidden = false;
-      formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }, 1500);
+    const data = new FormData(form);
+    data.append('access_key', '154779e6-8961-488a-b0e1-b35e0a73f95d');
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: data
+    })
+      .then(res => res.json())
+      .then(res => {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('is-loading');
+        if (res.success) {
+          form.reset();
+          formSuccess.hidden = false;
+          formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          alert('Fehler beim Senden. Bitte versuche es erneut oder schreib uns direkt an business@swiftsites.info');
+        }
+      })
+      .catch(() => {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('is-loading');
+        alert('Fehler beim Senden. Bitte versuche es erneut oder schreib uns direkt an business@swiftsites.info');
+      });
   });
 
 });
