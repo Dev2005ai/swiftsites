@@ -329,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Loading state
     submitBtn.disabled = true;
     submitBtn.classList.add('is-loading');
-    formSuccess.hidden = true;
+    formSuccess.classList.remove('is-visible', 'is-hiding');
 
     const data = new FormData(form);
     data.append('access_key', '154779e6-8961-488a-b0e1-b35e0a73f95d');
@@ -344,8 +344,16 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.classList.remove('is-loading');
         if (res.success) {
           form.reset();
-          formSuccess.hidden = false;
+          formSuccess.classList.add('is-visible');
           formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+          // Auto-hide nach 10 Sekunden mit Ausblend-Animation
+          setTimeout(() => {
+            formSuccess.classList.replace('is-visible', 'is-hiding');
+            formSuccess.addEventListener('animationend', () => {
+              formSuccess.classList.remove('is-hiding');
+            }, { once: true });
+          }, 10000);
         } else {
           alert('Fehler beim Senden. Bitte versuche es erneut oder schreib uns direkt an business@swiftsites.info');
         }
