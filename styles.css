@@ -520,7 +520,9 @@ address {
   height: 7px;
   background: var(--color-accent);
   border-radius: 50%;
-  animation: pulse-dot 2s ease-in-out infinite;
+  animation: pulse-dot 2.5s ease-in-out infinite;
+  will-change: opacity;
+  transform: translateZ(0);
 }
 
 .hero__headline {
@@ -599,12 +601,13 @@ address {
   position: absolute;
   top: 5px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(0);
   width: 4px;
   height: 8px;
   background: var(--color-accent);
   border-radius: var(--radius-full);
   animation: scroll-dot 2s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
 /* Hero Animations */
@@ -615,14 +618,14 @@ address {
 
 @keyframes pulse-dot {
   0%, 100% { opacity: 1; }
-  50%       { opacity: 0.4; }
+  50%       { opacity: 0.25; }
 }
 
 @keyframes scroll-dot {
-  0%        { top: 5px;  opacity: 1; }
-  60%       { top: 18px; opacity: 0; }
-  61%       { top: 5px;  opacity: 0; }
-  100%      { top: 5px;  opacity: 1; }
+  0%   { transform: translateX(-50%) translateY(0);    opacity: 1; }
+  60%  { transform: translateX(-50%) translateY(13px); opacity: 0; }
+  61%  { transform: translateX(-50%) translateY(0);    opacity: 0; }
+  100% { transform: translateX(-50%) translateY(0);    opacity: 1; }
 }
 
 @keyframes spin {
