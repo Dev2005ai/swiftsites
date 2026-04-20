@@ -1433,6 +1433,24 @@ address {
   flex-shrink: 0;
 }
 
+.form-error-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: var(--radius-md);
+  color: #fca5a5;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  animation: successIn 0.35s ease forwards;
+}
+
+.form-error-banner[hidden] { display: none; }
+.form-error-banner svg { flex-shrink: 0; margin-top: 1px; }
+.form-error-banner a { color: #fca5a5; text-decoration: underline; text-underline-offset: 2px; }
+
 @media (min-width: 1024px) {
   .kontakt__inner {
     grid-template-columns: 1fr 1fr;

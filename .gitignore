@@ -29,6 +29,10 @@ yarn-error.log*
 *.pem
 Thumbs.db
 
+# Private business documents
+BusinessPlan.md
+*.business.md
+
 # Vercel
 .vercel
 

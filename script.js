@@ -248,6 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const form       = $('#contactForm');
   const submitBtn  = $('#submitBtn');
   const formSuccess = $('#formSuccess');
+  const formError   = $('#formError');
 
   if (!form) return;
 
@@ -330,19 +331,17 @@ document.addEventListener('DOMContentLoaded', () => {
     submitBtn.disabled = true;
     submitBtn.classList.add('is-loading');
     formSuccess.classList.remove('is-visible', 'is-hiding');
+    formError.hidden = true;
 
-    const data = new FormData(form);
-    data.append('access_key', '154779e6-8961-488a-b0e1-b35e0a73f95d');
-
-    fetch('https://api.web3forms.com/submit', {
+    fetch('/', {
       method: 'POST',
-      body: data
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
     })
-      .then(res => res.json())
       .then(res => {
         submitBtn.disabled = false;
         submitBtn.classList.remove('is-loading');
-        if (res.success) {
+        if (res.ok) {
           form.reset();
           formSuccess.classList.add('is-visible');
           formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -355,13 +354,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }, { once: true });
           }, 10000);
         } else {
-          alert('Fehler beim Senden. Bitte versuche es erneut oder schreib uns direkt an business@swiftsites.info');
+          formError.hidden = false;
+          formError.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
       })
       .catch(() => {
         submitBtn.disabled = false;
         submitBtn.classList.remove('is-loading');
-        alert('Fehler beim Senden. Bitte versuche es erneut oder schreib uns direkt an business@swiftsites.info');
+        formError.hidden = false;
+        formError.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       });
   });
 
