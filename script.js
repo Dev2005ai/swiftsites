@@ -366,20 +366,26 @@ document.addEventListener('DOMContentLoaded', () => {
     formSuccess.classList.remove('is-visible', 'is-hiding');
     formError.hidden = true;
 
-    fetch('/', {
+    const data = new FormData(form);
+    // Web3Forms access key — linked to kontakt@swift-sites.de
+    // Key holen: https://web3forms.com → E-Mail eingeben → Key kopieren
+    data.append('access_key', 'DEIN_WEB3FORMS_KEY_HIER');
+    data.append('subject', 'Neue Anfrage über swift-sites.de');
+    data.append('from_name', 'SwiftSites Kontaktformular');
+
+    fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(new FormData(form)).toString()
+      body: data
     })
+      .then(res => res.json())
       .then(res => {
         submitBtn.disabled = false;
         submitBtn.classList.remove('is-loading');
-        if (res.ok) {
+        if (res.success) {
           form.reset();
           formSuccess.classList.add('is-visible');
           formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
-          // Auto-hide nach 10 Sekunden mit Ausblend-Animation
           setTimeout(() => {
             formSuccess.classList.replace('is-visible', 'is-hiding');
             formSuccess.addEventListener('animationend', () => {
