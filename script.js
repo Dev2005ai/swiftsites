@@ -369,7 +369,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const data = new FormData(form);
     // Web3Forms access key — linked to kontakt@swift-sites.de
     // Key holen: https://web3forms.com → E-Mail eingeben → Key kopieren
-    data.append('access_key', 'DEIN_WEB3FORMS_KEY_HIER');
+    data.append('access_key', 'e92a1d3a-9c37-48d9-9d66-d442575eb847');
     data.append('subject', 'Neue Anfrage über swift-sites.de');
     data.append('from_name', 'SwiftSites Kontaktformular');
 
