@@ -1,5 +1,5 @@
 [build]
-  command = "mkdir -p public && cp index.html styles.css script.js agb.html datenschutz.html impressum.html _redirects LogoSS-removebg-preview.png public/ 2>/dev/null || true"
+  command = "mkdir -p public/fonts && cp index.html styles.css fonts.css script.js agb.html datenschutz.html impressum.html _redirects LogoSS-removebg-preview.png public/ && cp fonts/*.woff2 public/fonts/ 2>/dev/null || true"
   publish = "public"
 
 [build.environment]
@@ -14,4 +14,4 @@
     Referrer-Policy            = "strict-origin-when-cross-origin"
     Permissions-Policy         = "camera=(), microphone=(), geolocation=(), payment=()"
     Strict-Transport-Security  = "max-age=31536000; includeSubDomains; preload"
-    Content-Security-Policy    = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://api.microlink.io; connect-src 'self'; frame-ancestors 'none';"
+    Content-Security-Policy    = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://images.unsplash.com https://api.microlink.io; connect-src 'self'; frame-ancestors 'none';"
