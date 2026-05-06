@@ -855,26 +855,17 @@ address {
   overflow: hidden;
 }
 
-.portfolio-card__mockup {
+.portfolio-card__screenshot {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
   transition: transform var(--transition-slow);
 }
 
-.portfolio-card:hover .portfolio-card__mockup {
-  transform: scale(1.05);
-}
-
-.portfolio-card__mockup--1 {
-  background: linear-gradient(135deg, #1a0a00 0%, #3d1a00 30%, #78350f 60%, #92400e 80%, #b45309 100%);
-}
-
-.portfolio-card__mockup--2 {
-  background: linear-gradient(135deg, #0c1a2e 0%, #0e2447 30%, #1e3a5f 60%, #1e40af 80%, #2563eb 100%);
-}
-
-.portfolio-card__mockup--3 {
-  background: linear-gradient(135deg, #1a0a1e 0%, #3b0764 30%, #6d28d9 60%, #a855f7 80%, #e879f9 100%);
+.portfolio-card:hover .portfolio-card__screenshot {
+  transform: scale(1.03);
 }
 
 .portfolio-card__overlay {
