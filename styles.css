@@ -877,30 +877,59 @@ address {
   display: flex;
   align-items: flex-end;
   padding: var(--space-6);
-  opacity: 1;
-  transition: opacity var(--transition-base);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
 .portfolio-card__overlay-content {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
-  transform: translateY(0);
-  transition: transform var(--transition-base);
+  transform: translateY(8px);
+  transition: transform 0.3s ease;
 }
 
+/* Desktop: hover reveals overlay */
 @media (hover: hover) {
-  .portfolio-card__overlay {
-    opacity: 0;
-  }
-  .portfolio-card__overlay-content {
-    transform: translateY(8px);
-  }
   .portfolio-card:hover .portfolio-card__overlay {
     opacity: 1;
+    pointer-events: auto;
   }
   .portfolio-card:hover .portfolio-card__overlay-content {
     transform: translateY(0);
+  }
+}
+
+/* Mobile: tap reveals overlay */
+@media (hover: none) {
+  .portfolio-card__overlay {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .portfolio-card.tapped .portfolio-card__overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .portfolio-card.tapped .portfolio-card__overlay-content {
+    transform: translateY(0);
+  }
+  /* Tap hint icon on image */
+  .portfolio-card__image::after {
+    content: '';
+    position: absolute;
+    bottom: 0.75rem;
+    right: 0.75rem;
+    width: 36px;
+    height: 36px;
+    background: rgba(255,255,255,0.15) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E") no-repeat center/18px;
+    border-radius: 50%;
+    backdrop-filter: blur(4px);
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+  .portfolio-card.tapped .portfolio-card__image::after {
+    opacity: 0;
   }
 }
 

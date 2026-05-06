@@ -317,6 +317,39 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ── Portfolio: Tap-to-reveal on touch devices ─────────────
+  const isTouchDevice = () => window.matchMedia('(hover: none)').matches;
+
+  $$('.portfolio-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (!isTouchDevice()) return;
+
+      const isOpen = card.classList.contains('tapped');
+
+      // Close all other cards
+      $$('.portfolio-card.tapped').forEach(c => c.classList.remove('tapped'));
+
+      if (!isOpen) {
+        card.classList.add('tapped');
+        // Allow link clicks inside overlay to work
+        e.stopPropagation();
+      }
+    });
+
+    // Prevent overlay links from triggering card toggle
+    card.querySelectorAll('.portfolio-card__overlay a').forEach(link => {
+      link.addEventListener('click', e => e.stopPropagation());
+    });
+  });
+
+  // Close tapped card when tapping outside
+  document.addEventListener('click', () => {
+    if (isTouchDevice()) {
+      $$('.portfolio-card.tapped').forEach(c => c.classList.remove('tapped'));
+    }
+  });
+
+  // ── Contact Form ───────────────────────────────────────────
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
