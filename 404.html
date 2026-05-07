@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>404 – Seite nicht gefunden | SwiftSites</title>
+  <link rel="icon" href="LogoSS-removebg-preview.png" type="image/png">
+  <link rel="stylesheet" href="fonts.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent:  #38bdf8;
+      --indigo:  #818cf8;
+      --bg:      #0a0f1e;
+      --text:    #f1f5f9;
+      --muted:   #94a3b8;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+      -webkit-font-smoothing: antialiased;
+      overflow: hidden;
+    }
+
+    /* Background glow */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(56,189,248,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(129,140,248,0.07) 0%, transparent 55%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      max-width: 520px;
+    }
+
+    .error-code {
+      font-size: clamp(6rem, 20vw, 10rem);
+      font-weight: 800;
+      line-height: 1;
+      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+      letter-spacing: -0.04em;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      margin-bottom: 2rem;
+    }
+
+    .logo img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+
+    h1 {
+      font-size: clamp(1.4rem, 4vw, 1.9rem);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    .actions {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(56,189,248,0.3);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, #38bdf8, #818cf8);
+      margin: 1.5rem auto;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <a href="/" class="logo">
+      <img src="LogoSS-removebg-preview.png" alt="SwiftSites Logo">
+      SwiftSites
+    </a>
+    <div class="error-code">404</div>
+    <div class="divider"></div>
+    <h1>Diese Seite existiert nicht.</h1>
+    <p>Die gesuchte Seite wurde nicht gefunden – sie wurde vielleicht verschoben, umbenannt oder existiert nicht mehr.</p>
+    <div class="actions">
+      <a href="/" class="btn btn-primary">
+        ← Zurück zur Startseite
+      </a>
+      <a href="/#kontakt" class="btn btn-ghost">
+        Kontakt aufnehmen
+      </a>
+    </div>
+  </div>
+</body>
+</html>
