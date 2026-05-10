@@ -1,5 +1,5 @@
 [build]
-  command = "mkdir -p public/fonts && cp index.html styles.css fonts.css script.js agb.html datenschutz.html impressum.html 404.html _redirects LogoSS-removebg-preview.png googlecc8d98b0b6e73d17.html sitemap.xml robots.txt public/ && cp fonts/*.woff2 public/fonts/ 2>/dev/null || true"
+  command = "mkdir -p public/fonts && cp index.html styles.css fonts.css script.js agb.html datenschutz.html impressum.html 404.html _redirects LogoSS-removebg-preview.png preview-handwerker.jpg googlecc8d98b0b6e73d17.html sitemap.xml robots.txt public/ && cp fonts/*.woff2 public/fonts/ 2>/dev/null || true"
   publish = "public"
 
 [build.environment]
